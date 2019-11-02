@@ -1,0 +1,53 @@
+/*********************************************************************************************************
+ *  UOCBookings - Hotel 
+ * *******************************************************************************************************/
+
+#include <stdio.h>
+
+// define constants
+
+#define MAX_CHARACTERS 10
+
+
+int main(int argc, char **argv) {
+	
+
+char password[MAX_CHARACTERS];
+char newPassword[MAX_CHARACTERS];
+int numRepetitions;
+int countNumber;
+char countLetter;
+int i;
+int a = 0;	
+		
+	//input number password
+	
+
+		printf("HOW MANY REPETITIONS DO YOU WANT TO PERFORM (1 to 100)? \n");
+		scanf("%d", &numRepetitions);
+		
+		while (numRepetitions <=0 || numRepetitions > 100) {
+			printf("INCORRECT NUMBER, PLEASE ENTER IT AGAIN. \n");
+			printf("HOW MANY REPETITIONS DO YOU WANT TO PERFORM (1 TO 100)?");
+		scanf("%d", &numRepetitions);
+		
+		}
+	for (i = 1; i<numRepetitions; i++){ 
+	printf("ENTER A 10 CHARACTERS PASSWORD ONLY LOWER CASE LETTERS OR DIGITS \n");
+	for (a = 0; a<MAX_CHARACTERS; a++){
+		scanf("%c",&password[a]);
+	if ((int)newPassword[a]>=120) && (int)newPassword[a]<=122){
+	    password[a]=(int)(password[a] -23;
+	  countLetter++;}
+	  else if ((int)password[a]>=97) && (int)password[a]<=119){
+	password[a]= (int)password[a] +3;
+	else if ((int)password[a]>=48) && (int)password[a]<=57){
+	password[a]=(int)password[a]*9+1 %10;	
+	countNumber++;}
+	
+printf("%d. THE PASSWORD ENCRIPTED IS: \n, i, password);
+printf("IT WAS %d DIGITS AND %d LETTERS \n", countNumber, countLetter);
+
+
+	return 0;
+	}
