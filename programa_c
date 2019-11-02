@@ -1,0 +1,209 @@
+#include <cstring>
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+
+using namespace std;
+
+int n;
+char textoE[100] = {0};
+char textoD[100] = {0};
+int largo, x, c;
+char r;
+
+/* ================== CALCULAR NUMERO ================== */
+
+int numero(){
+n = n*(n+1);
+return n;
+}
+
+/* =================== ENCRIPTAR ====================== */
+
+char encriptar(char *textoD)
+{
+largo = strlen(textoD) + 1;
+n = 1;
+for(c = 1; c < largo; c++){
+x = c-1;
+n = numero();
+textoE[x] = textoD[x] + n;
+}
+return *textoE;
+}
+
+/* ================= DESENCRIPTAR ===================== */
+
+char desencriptar(char *textoE)
+{
+largo = strlen(textoE) + 1;
+n = 1;
+for(c = 1; c < largo; c++){
+x = c-1;
+textoD[x] = textoE[x] - n;
+}
+return *textoD;
+}
+
+/* ==================== MAIN ======================= */
+
+int main(int argc, char *argv[])
+{
+cout << "Bienvenido al encriptador" << endl;
+while(1){
+system("cls");
+cout << "Desea encriptar o desencriptar? <E/D>" << endl;
+r = getch();
+r = toupper(r);
+switch(r){
+// Encriptar:
+case 'E':
+cout << "Introduzca la palabra que desea encriptar: ";
+cin.getline(textoD, 100);
+*textoE = encriptar(textoD);
+cout << "Su palabra encriptada es: "<< textoE << endl;
+cout << "Desea salir del programa? <S/N>" << endl;
+r = getch();
+r = toupper(r);
+switch(r){
+case 'S':
+exit(0);
+case 'N':
+break;
+default:
+cout << "Ese comando no existe, se va a cerrar el programa en 3 segundos" << endl;
+Sleep(3000);
+exit(0);
+}
+break;
+// Desencriptar:
+case 'D':
+cout << "Introduzca la palabra que desea desencriptar: ";
+cin.getline(textoE, 100);
+*textoD = desencriptar(textoE);
+cout << "Su palabra desencriptada es: " << textoD << endl;
+cout << "Desea salir del programa? <S/N>" << endl;
+r = getch();
+r = toupper(r);
+switch(r){
+case 'S':
+exit(0);
+case 'N':
+break;
+default:
+cout << "Ese comando no existe, se va a cerrar el programa en 3 segundos" << endl;
+Sleep(3000);
+exit(0);
+}
+default:
+break;
+}
+}
+return EXIT_SUCCESS;
+}
+
+Lo que yo pude hacer fue esto:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <windows.h>
+
+int main(int argc, char *argv[])
+{
+int n;
+char textoE[100] = {0};
+char textoD[100] = {0};
+int largo, x, c;
+char r;
+
+/* ================== CALCULAR NUMERO ================== */
+
+int numero(){
+n = n*(n+1);
+return n;
+}
+
+/* =================== ENCRIPTAR ====================== */
+
+char encriptar(char *textoD)
+{
+largo = strlen(textoD) + 1;
+n = 1;
+for(c = 1; c < largo; c++){
+x = c-1;
+n = numero();
+textoE[x] = textoD[x] + n;
+}
+return *textoE;
+}
+
+/* ================= DESENCRIPTAR ===================== */
+
+char desencriptar(char *textoE)
+{
+largo = strlen(textoE) + 1;
+n = 1;
+for(c = 1; c < largo; c++){
+x = c-1;
+textoD[x] = textoE[x] - n;
+}
+return *textoD;
+}
+
+/* ==================== MAIN ======================= */
+
+int main(int argc, char *argv[])
+{
+printf("Bienvenido al encriptador");
+while(1){
+system("cls");
+printf("Desea encriptar o desencriptar? <E/D>");
+r = getch();
+r = toupper(r);
+switch(r){
+// Encriptar:
+case 'E':
+printf("Introduzca la palabra que desea encriptar: ");
+textoD=getchar();
+*textoE = encriptar(textoD);
+printf("Su palabra encriptada es: ", textoE);
+printf("Desea salir del programa? <S/N>");
+r = getch();
+r = toupper(r);
+switch(r){
+case 'S':
+exit(0);
+case 'N':
+break;
+default:
+printf("Ese comando no existe, se va a cerrar el programa en 3 segundos");
+Sleep(3000);
+exit(0);
+}
+break;
+// Desencriptar:
+case 'D':
+printf("Introduzca la palabra que desea desencriptar: ");
+textoE=getchar();
+*textoD = desencriptar(textoE);
+printf("Su palabra desencriptada es: ", textoD);
+printf("Desea salir del programa? <S/N>");
+r = getch();
+r = toupper(r);
+switch(r){
+case 'S':
+exit(0);
+case 'N':
+break;
+default:
+printf("Ese comando no existe, se va a cerrar el programa en 3 segundos");
+Sleep(3000);
+exit(0);
+}
+default:
+break;
+}
+}
+return EXIT_SUCCESS;
+}
